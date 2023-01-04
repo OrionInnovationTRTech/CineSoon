@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  TMDB-App
+
+  Created by Emin Saygı on 9.11.2022.
+  
+*/
+
+"Dark Mode" = "Karanlık Mod";
+"Language" = "Dil";
+"Home" = "Ev";
+"Settings" = "Ayarlar";
+"Top Rated" = "En Çok Oylanan";
+"Most Popular" = "En Popüler";
+"Latest" = "Son Çıkan Filmler";
+"Favourites" = "Favoriler";
+"Type something here to search movies" = "Filmleri aramak için buraya bir şeyler yazın";
