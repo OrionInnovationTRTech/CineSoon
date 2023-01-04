@@ -29,7 +29,7 @@ class MovieListTableViewCell: UITableViewCell {
         
         let voteAveragaText = Utils.convertDouble(movie.voteAverage, maxDecimals: 2)
         self.voteAverageLabel.text = "\(voteAveragaText)/10"
-
+        
         self.relaseLabel.text = Utils.formattedDateFromString(dateString: movie.releaseDate ?? "", withFormat: "dd.MM.yyyy")
     }
 }

@@ -36,9 +36,6 @@ class FavouritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewWillAppear(_ animated: Bool) {
         // Bir gözlemci tanımladık. Haberciden gelecek verileri işleyecek.
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: "newData"), object: nil)
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,10 +65,8 @@ class FavouritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             let detailVC = segue.destination as? MovieDetailVC
             detailVC?.selectedId = selectedId
             detailVC?.movieIdArray = movieIdArray
-            
-            
         }
-      
+        
     }
     
     

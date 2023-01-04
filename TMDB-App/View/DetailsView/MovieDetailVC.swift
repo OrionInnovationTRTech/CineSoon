@@ -41,10 +41,10 @@ class MovieDetailVC: UIViewController {
             isButtonActive()
             
         }
-       
+        
     }
     
-     private func isButtonActive(){
+    private func isButtonActive(){
         isButtonImage(imageName: "checkmark.circle.fill")
         saveMovieButton.isEnabled = false
     }

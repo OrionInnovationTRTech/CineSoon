@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C4CA04828D3752A00CC631E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4CA04728D3752A00CC631E /* Movie.swift */; };
+		3C8C7E89295239C8009753BE /* SessionID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C7E88295239C8009753BE /* SessionID.swift */; };
 		3C9B82A028E9E62D000B9D27 /* MoviesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B829E28E9E62D000B9D27 /* MoviesData.xcdatamodeld */; };
 		3CA264BC2916F7D0006ECB68 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA264BB2916F7D0006ECB68 /* SettingsVC.swift */; };
 		3CC6CB8129376FC4002935D1 /* RequestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6CB8029376FC4002935D1 /* RequestToken.swift */; };
@@ -35,6 +36,7 @@
 		3C5C4B84291AAA8C0077DED6 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		3C5C4B85291AAA9D0077DED6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		3C5C4B87291AAB4E0077DED6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		3C8C7E88295239C8009753BE /* SessionID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionID.swift; sourceTree = "<group>"; };
 		3C9B829F28E9E62D000B9D27 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3CA264BB2916F7D0006ECB68 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		3CC6CB8029376FC4002935D1 /* RequestToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToken.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				3C4CA04728D3752A00CC631E /* Movie.swift */,
 				3CC6CB8029376FC4002935D1 /* RequestToken.swift */,
+				3C8C7E88295239C8009753BE /* SessionID.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C8C7E89295239C8009753BE /* SessionID.swift in Sources */,
 				3CDEBE2028D3249800EEFCF0 /* MovieListTableViewCell.swift in Sources */,
 				3CDA4DFD28D30D2400DF82C3 /* MovieListVC.swift in Sources */,
 				3CFA003D28E8DADB00BED0F2 /* FavouritesVC.swift in Sources */,
@@ -544,7 +548,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -578,7 +582,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

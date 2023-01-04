@@ -12,8 +12,8 @@ struct SettingsVC: View {
     @State var isOn = false
     @State var selection = "en"
     @State var valueS = ""
-
-   let lang = ["en","tr","ru"]
+    
+    let lang = ["en","tr","ru"]
     
     var body: some View {
         
@@ -23,16 +23,16 @@ struct SettingsVC: View {
                 Form {
                     Toggle(langChange(str: "Dark Mode", lang: valueS),isOn: $isOn)
                         .onChange(of: isOn) { value in
-                          
+                            
                             if #available(iOS 15.0, *){
-                                       let appDelaggate = UIApplication.shared.windows.first
-                                       
-                                       if value {
-                                           appDelaggate?.overrideUserInterfaceStyle = .dark
-                                           return
-                                       }
-                                       appDelaggate?.overrideUserInterfaceStyle = .light
-                                   }
+                                let appDelaggate = UIApplication.shared.windows.first
+                                
+                                if value {
+                                    appDelaggate?.overrideUserInterfaceStyle = .dark
+                                    return
+                                }
+                                appDelaggate?.overrideUserInterfaceStyle = .light
+                            }
                         }
                     Picker(langChange(str: "Language", lang: valueS), selection: $selection) {
                         ForEach(lang, id: \.self){
@@ -45,17 +45,17 @@ struct SettingsVC: View {
                         Utils.shared.lang = value
                     }
                 }
-               
+                
                 
             }.navigationTitle(langChange(str: "Settings", lang: valueS))
                 .navigationBarTitleDisplayMode(.inline)
-                
+            
         }
-     
-       
+        
+        
     }
-
-  
+    
+    
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toListVC"  {
             let detailVC = segue.destination as? MovieListVC
@@ -75,15 +75,15 @@ struct SettingsVC_Previews: PreviewProvider {
 }
 
 
- @available(iOS 16.0, *)
- class SettingsVCBridge : UIHostingController<SettingsVC> {
-     required init?(coder aDecoder: NSCoder) {
-         super.init(coder: aDecoder, rootView: SettingsVC())
-     }
- }
+@available(iOS 16.0, *)
+class SettingsVCBridge : UIHostingController<SettingsVC> {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: SettingsVC())
+    }
+}
 
 
- 
+
 
 
 
