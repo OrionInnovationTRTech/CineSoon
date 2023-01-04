@@ -2,7 +2,7 @@ import UIKit
 import DropDown
 import CoreData
 
-class MovieListVC: UIViewController, UISearchResultsUpdating {
+final class MovieListVC: UIViewController, UISearchResultsUpdating {
     private var moviesData: [Movie] = [Movie]()
     private let dropDown = DropDown()
     private let typeMovie = TypeMovie()
@@ -23,9 +23,7 @@ class MovieListVC: UIViewController, UISearchResultsUpdating {
         
         movieTable.delegate = self
         movieTable.dataSource = self
-        
-        refreshControl()
-        
+        getCoreData()
         
         
     }
@@ -61,9 +59,10 @@ class MovieListVC: UIViewController, UISearchResultsUpdating {
         getCoreData()
         DropDownListOptions()
         searchController()
-
-
-
+        refreshControl()
+        
+        
+        
         
     }
     
@@ -74,7 +73,7 @@ class MovieListVC: UIViewController, UISearchResultsUpdating {
     }
     
     
-   
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailVC"  {
             let detailVC = segue.destination as? MovieDetailVC
@@ -88,10 +87,11 @@ class MovieListVC: UIViewController, UISearchResultsUpdating {
     
     
 }
-
+//MARK: -
 extension MovieListVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return moviesData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,10 +105,10 @@ extension MovieListVC : UITableViewDelegate,UITableViewDataSource {
         
         selectedId = moviesData[indexPath.row].id ?? 0
         
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toDetailVC", sender: nil)
-            
-        }
+        
+        self.performSegue(withIdentifier: "toDetailVC", sender: nil)
+        
+        
     }
     
     
@@ -129,7 +129,7 @@ extension MovieListVC {
                 DispatchQueue.main.async {
                     self.moviesData.append(contentsOf: data)
                     self.movieTable.reloadData()
-                    //self.currentPage += 1
+                    self.currentPage += 1
                     
                     
                 }
