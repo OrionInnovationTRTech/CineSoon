@@ -8,10 +8,11 @@ class WebServices {
     private var session = URLSession.shared
     
     // Asenkron işlemler için escaping clousere kullandık. Modeli işledikten sonra tekrar çağırmamız gerektiği için completion tamamlama bloğu içerisinde escaping clousere kullandık
+    
+    
     func getMovie(page:Int, type: String, completion: @escaping(Result<[Movie], Error>)->()){
         
-        guard let url = URL(string: api.discoverURL + "\(type)" + API().apiKey+"&page=\(page)") else {return}
-        
+        guard let url = URL(string: api.discoverURL + "\(type)&" + api.apiKey+"&page=\(page)") else {return}
         session.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else {
                 return
@@ -30,7 +31,7 @@ class WebServices {
     }
     
     func getMovieDetail(id: Int, completion: @escaping(Result<Movie, Error>)->()){
-        guard let url = URL(string: "\(api.baseURL)/3/movie/\(id)?\(API().apiKey)&language=en-US") else {return}
+        guard let url = URL(string: "\(api.baseURL)/3/movie/\(id)?&\(api.apiKey)&language=en-US") else {return}
         let task = session.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else {
                 return
@@ -69,7 +70,7 @@ class WebServices {
     }
     
     func fetchRequestToken(completion: @escaping (RequestToken) -> Void) {
-        guard let url = URL(string: "\(API().baseURL)/3/authentication/token/new?api_key=464f8a5567ef6de84d256d195532ca13") else {return}
+        guard let url = URL(string: "\(API().baseURL)/3/authentication/token/new?\(api.apiKey)") else {return}
         let task = session.dataTask(with: url) { (data, response, error) in
             if let data = data {
                 let decoder = JSONDecoder()
@@ -77,33 +78,29 @@ class WebServices {
                     let requestToken = try decoder.decode(RequestToken.self, from: data)
                     completion(requestToken)
                 } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        task.resume()
-    }
-
-    func login(token:String,userName: String, password: String,completion: @escaping (RequestToken) -> Void) {
-        guard let url = URL(string: "\(API().baseURL)/3/authentication/token/validate_with_login?api_key=464f8a5567ef6de84d256d195532ca13&username=\(userName)&password=\(password)&request_token=\(token)") else {return
-            
-            
-        }
-        print(url)
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if let data = data {
-                let decoder = JSONDecoder()
-                do {
-                    let requestToken = try decoder.decode(RequestToken.self, from: data)
-                    completion(requestToken)
-                } catch {
-                    print(error.localizedDescription)
+                    print("Request catch ", error.localizedDescription)
                 }
             }
         }
         task.resume()
     }
     
- 
+    func login(token:String,userName: String, password: String,completion: @escaping (RequestToken) -> Void) {
+        guard let url = URL(string: "\(API().baseURL)/3/authentication/token/validate_with_login?\(api.apiKey)&username=\(userName)&password=\(password)&request_token=\(token)") else {return}
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                let decoder = JSONDecoder()
+                do {
+                    let requestToken = try decoder.decode(RequestToken.self, from: data)
+                    completion(requestToken)
+                } catch {
+                    print("Login Catch", error.localizedDescription)
+                }
+            }
+        }
+        task.resume()
+    }
+    
     
 }
